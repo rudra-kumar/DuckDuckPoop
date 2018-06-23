@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Planet
   - Bullet
+  - Manager
+  - Hunter
+  - Duck
   layers:
   - Default
   - TransparentFX

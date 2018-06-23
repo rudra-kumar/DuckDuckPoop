@@ -13,6 +13,7 @@ public class Manager : MonoBehaviour {
     public void HunterWin()
     {
         gameOver = true;
+        duckUI.gameObject.SetActive(true);
         hunterUI.gameObject.SetActive(true);
         hunterUI.text = win;
         duckUI.text = lose;
@@ -22,6 +23,7 @@ public class Manager : MonoBehaviour {
     {
         gameOver = true;
         duckUI.gameObject.SetActive(true);
+        hunterUI.gameObject.SetActive(true);
         hunterUI.text = lose;
         duckUI.text = win;
     }

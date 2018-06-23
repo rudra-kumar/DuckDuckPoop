@@ -3,11 +3,13 @@
 public class DuckController : MonoBehaviour {
 
     [SerializeField] float moveSpeed = 15;
+    [SerializeField] float dashForce = 5;
     private Vector3 moveDir;
     Rigidbody rb;
 
-    //[SerializeField] GameObject poop;
-    //[SerializeField] GameObject spawnLoc;
+    bool duck = false;
+
+    [SerializeField] GameObject poop;
 
     // Reference to the Manager Script
     Manager manager;
@@ -26,15 +28,39 @@ public class DuckController : MonoBehaviour {
             // Get controls from Controller 1
             moveDir = new Vector3(Input.GetAxis("Horizontal1"), 0, Input.GetAxis("Vertical1")).normalized;
 
-            // If dodge is pressed
+            // If duck is pressed
             if (Input.GetButtonDown("DDuck"))
             {
-                // TODO: Dodge
+                // Making it into a ducking state
+                duck = true;
 
-                // TODO: Poop
+                // Store the current position
+                Vector3 tempLoc = transform.position;
 
-                Debug.Log("Dodge");
-                //GameObject.Instantiate(poop, spawnLoc.transform.position, spawnLoc.transform.rotation);
+                // Change the scale of the mesh
+                transform.Find("Body").transform.localScale = new Vector3(1, 0.5f, 1);
+                // Change the height of the collider
+                GetComponent<CapsuleCollider>().height = 1;
+                // Do a dash
+                //rb.AddForce(transform.forward * dashForce, ForceMode.Impulse);
+
+                // Poop
+                GameObject.Instantiate(poop, tempLoc, transform.rotation);
+
+                //Debug.Log("Dodge");
+
+            }
+            if (Input.GetButtonUp("DDuck"))
+            {
+                // If ducking is done, revert to normal
+                if (duck)
+                {
+                    // Change the scale of the mesh
+                    transform.Find("Body").transform.localScale = new Vector3(1, 1, 1);
+                    // Change the height of the collider
+                    GetComponent<CapsuleCollider>().height = 2;
+                }
+                duck = false;
             }
         }
     }
