@@ -8,15 +8,38 @@ public class Bullet : MonoBehaviour {
     Vector3 planet;
     Vector3 forward;
 
-	void Start () {
+    // Reference to the Manager Script
+    Manager manager;
+
+    void Start () {
+        // Reference to the Manager Script
+        manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<Manager>();
         // Getting the planets position
         planet = GameObject.FindGameObjectWithTag("Planet").transform.position;
+        // Store the forward vector when spawned
         forward = transform.forward;
 	}
 
     private void FixedUpdate()
     {
-        transform.RotateAround(planet, forward, bullSpeed * Time.deltaTime);
+        // If game is not over
+        if (!manager.gameOver)
+        {
+            // Rotate around the center of the planet every second
+            transform.RotateAround(planet, forward, bullSpeed * Time.deltaTime);
+        }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        // If it collides with the Duck
+        if (collision.gameObject.transform.tag == "Duck")
+            // Call HunterWin function in the Manager Script
+            GameObject.FindGameObjectWithTag("Manager").GetComponent<Manager>().HunterWin();
+
+        // If it collides with the Hunter
+        if (collision.gameObject.transform.tag == "Hunter")
+            // Call DuckWin function in the Manager Script
+            GameObject.FindGameObjectWithTag("Manager").GetComponent<Manager>().DuckWin();
+    }
 }
