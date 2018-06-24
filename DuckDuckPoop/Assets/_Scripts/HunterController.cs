@@ -24,10 +24,10 @@ public class HunterController : MonoBehaviour {
         if(!manager.gameOver)
         {
             // Get input from Controller 2
-            moveDir = new Vector3(Input.GetAxis("Horizontal2"), 0, Input.GetAxis("Vertical2")).normalized;
+            moveDir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
 
             // If Fire button is pressed
-            if (Input.GetButtonDown("HFire"))
+            if (Input.GetMouseButtonDown(0))
             {
                 //Debug.Log("Fire");
                 GameObject.Instantiate(bullet, spawnLoc.transform.position, spawnLoc.transform.rotation);

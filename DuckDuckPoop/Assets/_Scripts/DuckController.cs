@@ -26,7 +26,7 @@ public class DuckController : MonoBehaviour {
         if (!manager.gameOver)
         {
             // Get controls from Controller 1
-            moveDir = new Vector3(Input.GetAxis("Horizontal1"), 0, Input.GetAxis("Vertical1")).normalized;
+            moveDir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
 
             // If duck is pressed
             if (Input.GetButtonDown("DDuck"))
