@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 
-public class DuckController : MonoBehaviour {
+public class DuckController : NetworkBehaviour {
 
     [SerializeField] float moveSpeed = 15;
     [SerializeField] float dashForce = 30;

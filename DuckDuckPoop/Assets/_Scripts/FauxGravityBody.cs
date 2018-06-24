@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class FauxGravityBody : MonoBehaviour {
+public class FauxGravityBody : NetworkBehaviour {
 
     [SerializeField] FauxGravityAttractor attractor;
     private Transform myTransform;

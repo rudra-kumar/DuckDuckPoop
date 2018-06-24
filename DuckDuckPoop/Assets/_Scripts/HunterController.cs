@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.Networking;
 
-public class HunterController : MonoBehaviour {
+public class HunterController : NetworkBehaviour {
 
     [SerializeField] float moveSpeed = 15;
     private Vector3 moveDir;
@@ -29,8 +30,7 @@ public class HunterController : MonoBehaviour {
             // If Fire button is pressed
             if (Input.GetMouseButtonDown(0))
             {
-                //Debug.Log("Fire");
-                GameObject.Instantiate(bullet, spawnLoc.transform.position, spawnLoc.transform.rotation);
+                CmdFire();
             }
         }
         
@@ -39,5 +39,12 @@ public class HunterController : MonoBehaviour {
     private void FixedUpdate()
     {
         rb.MovePosition(rb.position + transform.TransformDirection(moveDir) * moveSpeed * Time.deltaTime);
+    }
+    [Command]
+    void CmdFire()
+    {
+        //Debug.Log("Fire");
+        var projectile = GameObject.Instantiate(bullet, spawnLoc.transform.position, spawnLoc.transform.rotation);
+        NetworkServer.Spawn(bullet);
     }
 }
