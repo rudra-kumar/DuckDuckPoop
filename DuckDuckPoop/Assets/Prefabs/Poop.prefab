@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 64013875433670868}
   - component: {fileID: 114821762238512532}
   - component: {fileID: 54274863801915956}
+  - component: {fileID: 114208085048294666}
+  - component: {fileID: 114572457601053592}
   m_Layer: 0
   m_Name: Poop
   m_TagString: Poop
@@ -115,6 +117,59 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 7713efcaae40a3744ac2a0383c8317ac, type: 3}
+--- !u!114 &114208085048294666
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1827895573230762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 86
+    i1: 121
+    i2: 168
+    i3: 153
+    i4: 149
+    i5: 74
+    i6: 216
+    i7: 68
+    i8: 216
+    i9: 37
+    i10: 65
+    i11: 148
+    i12: 89
+    i13: 100
+    i14: 232
+    i15: 162
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+--- !u!114 &114572457601053592
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1827895573230762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 3
+  m_SendInterval: 0
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!114 &114821762238512532
 MonoBehaviour:
   m_ObjectHideFlags: 1

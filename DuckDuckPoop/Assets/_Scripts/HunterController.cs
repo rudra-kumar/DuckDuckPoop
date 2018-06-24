@@ -12,8 +12,11 @@ public class HunterController : NetworkBehaviour {
 
     Manager manager;
 
+    Vector3 dir;
+
     private void Start()
     {
+        dir = Vector3.zero;
         if (isLocalPlayer)
         {
             var cam = GameObject.FindWithTag("cam");
@@ -31,8 +34,21 @@ public class HunterController : NetworkBehaviour {
         // If game is not over
         if(!manager.gameOver)
         {
-            // Get input from Controller 2
-            moveDir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
+            switch(SystemInfo.deviceType)
+            {
+                case DeviceType.Handheld:
+                    // Get controls from Controller 1
+                    dir.x = Input.acceleration.x;
+                    dir.z = Input.acceleration.y;
+                    dir *= 0.004f;
+                    moveDir = dir.normalized;
+                    break;
+                case DeviceType.Desktop:
+                    // Get controls from Controller 1
+                    moveDir = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
+                    break;
+            }
+
 
             // If Fire button is pressed
             if (Input.GetMouseButtonDown(0))
