@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class Bullet : NetworkBehaviour {
+public class Bullet : NetworkTransform {
 
     [SerializeField] float bullSpeed = 100.0f;
     Vector3 planet;

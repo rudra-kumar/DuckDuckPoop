@@ -10,6 +10,8 @@ TagManager:
   - Hunter
   - Duck
   - Poop
+  - cam
+  - cam2
   layers:
   - Default
   - TransparentFX

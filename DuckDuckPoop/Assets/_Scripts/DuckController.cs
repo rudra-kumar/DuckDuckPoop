@@ -17,6 +17,13 @@ public class DuckController : NetworkBehaviour {
 
     private void Start()
     {
+        if(isLocalPlayer)
+        {
+            var cam = GameObject.FindWithTag("cam");
+            cam.transform.parent = transform;
+            cam.transform.localPosition = new Vector3(0.0f, 14.5f, -6.0f);
+            cam.transform.localRotation = Quaternion.AngleAxis(70.0f, transform.right);
+        }
         rb = gameObject.GetComponent<Rigidbody>();
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<Manager>();
     }

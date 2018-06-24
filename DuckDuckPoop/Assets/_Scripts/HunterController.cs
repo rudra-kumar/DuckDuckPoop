@@ -14,6 +14,13 @@ public class HunterController : NetworkBehaviour {
 
     private void Start()
     {
+        if (isLocalPlayer)
+        {
+            var cam = GameObject.FindWithTag("cam");
+            cam.transform.parent = transform;
+            cam.transform.localPosition = new Vector3(0.0f, 14.5f, -6.0f);
+            cam.transform.localRotation = Quaternion.AngleAxis(70.0f, transform.right);
+        }
         rb = gameObject.GetComponent<Rigidbody>();
         // Reference to the Manager Script
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<Manager>();
@@ -44,7 +51,7 @@ public class HunterController : NetworkBehaviour {
     void CmdFire()
     {
         //Debug.Log("Fire");
-        var projectile = GameObject.Instantiate(bullet, spawnLoc.transform.position, spawnLoc.transform.rotation);
-        NetworkServer.Spawn(bullet);
+        var projectile = Instantiate(bullet, spawnLoc.transform.position, spawnLoc.transform.rotation) as GameObject;
+        NetworkServer.Spawn(projectile);
     }
 }
