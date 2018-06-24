@@ -3,7 +3,7 @@
 public class DuckController : MonoBehaviour {
 
     [SerializeField] float moveSpeed = 15;
-    [SerializeField] float dashForce = 5;
+    [SerializeField] float dashForce = 30;
     private Vector3 moveDir;
     Rigidbody rb;
 
@@ -43,6 +43,7 @@ public class DuckController : MonoBehaviour {
                 GetComponent<CapsuleCollider>().height = 1;
                 // Do a dash
                 //rb.AddForce(transform.forward * dashForce, ForceMode.Impulse);
+                rb.MovePosition(rb.position + transform.TransformDirection(moveDir) * dashForce * Time.deltaTime);
 
                 // Poop
                 GameObject.Instantiate(poop, tempLoc, transform.rotation);

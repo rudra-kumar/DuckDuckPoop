@@ -10,6 +10,15 @@ public class Manager : MonoBehaviour {
     string win = "You Win";
     string lose = "You Lose";
 
+    [SerializeField] AudioClip bg;
+
+    private void Start()
+    {
+        AudioSource audio = gameObject.GetComponent<AudioSource>();
+        //audio.Play();
+        
+    }
+
     public void HunterWin()
     {
         gameOver = true;

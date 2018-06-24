@@ -17,7 +17,7 @@ public class Bullet : MonoBehaviour {
         // Getting the planets position
         planet = GameObject.FindGameObjectWithTag("Planet").transform.position;
         // Store the forward vector when spawned
-        forward = transform.forward;
+        forward = transform.right;
 	}
 
     private void FixedUpdate()
