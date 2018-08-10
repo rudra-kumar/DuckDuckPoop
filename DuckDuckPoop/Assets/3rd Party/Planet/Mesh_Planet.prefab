@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33952628689002526}
   - component: {fileID: 23136433369245820}
   m_Layer: 0
-  m_Name: default
+  m_Name: Mesh_Planet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
