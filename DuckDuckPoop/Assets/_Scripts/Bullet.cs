@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 public class Bullet : NetworkTransform {
 
@@ -35,12 +36,22 @@ public class Bullet : NetworkTransform {
     {
         // If it collides with the Duck
         if (collision.gameObject.transform.tag == "Duck")
+        {
             // Call HunterWin function in the Manager Script
             GameObject.FindGameObjectWithTag("Manager").GetComponent<Manager>().HunterWin();
+            Invoke("ShutDown", 3.0f);
+        }
 
         // If it collides with the Hunter
         if (collision.gameObject.transform.tag == "Hunter")
+        {
             // Call DuckWin function in the Manager Script
             GameObject.FindGameObjectWithTag("Manager").GetComponent<Manager>().DuckWin();
+            Invoke("ShutDown", 3.0f);
+        }
+    }
+    void ShutDown(){
+        NetworkManager.Shutdown();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
